@@ -14,7 +14,6 @@ const parse = (param: Param) => {
 const ReplayOfTheWeekPage = ({ searchParams }: ReplaysPageProps) => {
   const sort = parse(searchParams.sort);
 
-  console.log(sort);
   return (
     <MaxWidthWrapper>
       <ReplayReel
