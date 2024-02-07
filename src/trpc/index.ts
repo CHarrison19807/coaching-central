@@ -50,6 +50,7 @@ export const appRouter = router({
         nextPage: hasNextPage ? nextPage : null,
       };
     }),
+
   getInfiniteReplays: publicProcedure
     .input(
       z.object({
@@ -72,6 +73,39 @@ export const appRouter = router({
         nextPage,
       } = await payload.find({
         collection: "replay-of-the-week",
+        sort,
+        depth: 1,
+        limit,
+        page,
+      });
+      return {
+        items,
+        nextPage: hasNextPage ? nextPage : null,
+      };
+    }),
+
+  getInfiniteCoaches: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().min(1).max(100),
+        cursor: z.number().nullish(),
+        query: ReplayQueryValidator,
+      })
+    )
+    .query(async ({ input }) => {
+      const { query, cursor } = input;
+      const { sort, limit, ...queryOpts } = query;
+
+      const payload = await getPayloadClient();
+
+      const page = cursor || 1;
+
+      const {
+        docs: items,
+        hasNextPage,
+        nextPage,
+      } = await payload.find({
+        collection: "coaches",
         sort,
         depth: 1,
         limit,
