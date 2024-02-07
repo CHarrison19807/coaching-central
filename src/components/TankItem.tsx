@@ -40,13 +40,19 @@ function TankItem({ tank, index }: TankItemProps) {
         href={`/tank/${slug}`}
       >
         <div className="flex flex-col w-full">
-          <Image src={img as string} alt={`Image of ${tank.title}`} />
+          <div className="group relative bg-zinc-100 aspect-square overflow-hidden rounded-xl">
+            <div className="absolute z-10 inset-0  transition">
+              <Image fill src={img as string} alt={`Image of ${tank.title}`} />
+            </div>
+          </div>
           <h3 className="mt-4 font-medium text-sm text-gray-700">
             {tank.title}
           </h3>
 
-          <p className="mt-1 text-sm text-gray-500">{tank.nation}</p>
-          <p className="mt-1 text-sm text-gray-500">{tank.class}</p>
+          <div className="flex mt-1 items-center text-gray-500 text-sm">
+            <p>{tank.nation}</p>
+            <p className="ml-2  border-l border-gray-300  pl-2">{tank.type}</p>
+          </div>
         </div>
       </Link>
     );
