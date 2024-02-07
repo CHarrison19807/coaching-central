@@ -27,7 +27,6 @@ export const ReplayOfTheWeek: CollectionConfig = {
       label: "Slug",
       type: "text",
       hidden: true,
-      unique: true,
     },
     {
       name: "description",
@@ -39,12 +38,6 @@ export const ReplayOfTheWeek: CollectionConfig = {
       name: "link",
       label: "Youtube Link",
       type: "text",
-      required: true,
-    },
-    {
-      name: "date",
-      label: "Date posted",
-      type: "date",
       required: true,
     },
     {

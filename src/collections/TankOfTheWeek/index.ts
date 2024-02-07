@@ -35,37 +35,15 @@ export const TankOfTheWeek: CollectionConfig = {
       label: "Slug",
       type: "text",
       hidden: true,
-      unique: true,
     },
     {
       name: "description",
-      type: "richText",
       label: "Description",
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HTMLConverterFeature({}),
-        ],
-      }),
-    },
-    lexicalHTML("description", {
-      name: "description_html",
-    }),
-    {
-      name: "date",
-      label: "Date Posted",
-      type: "date",
+      type: "textarea",
       required: true,
-      admin: {
-        date: {
-          minDate: new Date(),
-          displayFormat: "yyyy/MM/dd",
-          pickerAppearance: "dayOnly",
-        },
-      },
     },
     {
-      name: "class",
+      name: "type",
       label: "Tank type",
       type: "select",
       options: TANK_CATEGORIES.map((category) => ({
@@ -82,7 +60,12 @@ export const TankOfTheWeek: CollectionConfig = {
         value: nation,
       })),
     },
-
+    {
+      name: "link",
+      label: "Youtube Link",
+      type: "text",
+      required: true,
+    },
     {
       name: "image",
       label: "Image",

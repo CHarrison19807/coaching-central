@@ -17,7 +17,7 @@ export const Sessions: CollectionConfig = {
     },
     {
       name: "date",
-      label: "Date (dd/mm/yyyy)",
+      label: "Date of session (dd/mm/yyyy)",
       type: "date",
       required: false,
       admin: {

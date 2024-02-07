@@ -44,21 +44,10 @@ export interface Coach {
   tomatogg: string;
   twitchtv?: string | null;
   youtube?: string | null;
-  description?: {
-    root: {
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      type: string;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  about?: string | null;
+  region: 'NA' | 'EU' | 'APAC';
+  preference: 'Random Battles' | '7v7 Competitive' | '15v15 Competitive' | 'Calling' | 'Onslaught';
+  categories: ('Random Battles' | '7v7 Competitive' | '15v15 Competitive' | 'Calling' | 'Onslaught')[];
   priceId?: string | null;
   stripeId?: string | null;
   rate: number;
@@ -108,27 +97,12 @@ export interface TankOfTheWeek {
   id: number;
   title: string;
   slug?: string | null;
-  description?: {
-    root: {
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      type: string;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  description_html?: string | null;
-  date: string;
-  class?: ('Medium Tank' | 'Light Tank' | 'Heavy Tank' | 'Tank Destroyer' | 'Artillery') | null;
+  description: string;
+  type?: ('Medium Tank' | 'Light Tank' | 'Heavy Tank' | 'Tank Destroyer' | 'Artillery') | null;
   nation?:
     | ('USA' | 'Germany' | 'USSR' | 'UK' | 'France' | 'Czech' | 'Japan' | 'China' | 'Poland' | 'Sweden' | 'Italy')
     | null;
+  link: string;
   image: number | Media;
   updatedAt: string;
   createdAt: string;
@@ -139,7 +113,6 @@ export interface ReplayOfTheWeek {
   slug?: string | null;
   description: string;
   link: string;
-  date: string;
   image: number | Media;
   updatedAt: string;
   createdAt: string;
